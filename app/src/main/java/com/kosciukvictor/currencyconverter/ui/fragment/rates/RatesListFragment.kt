@@ -1,4 +1,4 @@
-package com.kosciukvictor.currencyconverter.ui.rates
+package com.kosciukvictor.currencyconverter.ui.fragment.rates
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -46,6 +46,9 @@ class RatesListFragment : Fragment() {
     }
 
     private fun setupRatesList(ratesTree: LinkedTreeMap<String, Double>) {
+        val ratesList: List<Double> = ArrayList<Double>(ratesTree.values)
+        val keysList: List<String> = ArrayList<String>(ratesTree.keys)
+        recyclerView.adapter = RatesListAdapter(ratesList, keysList)
     }
 }
 

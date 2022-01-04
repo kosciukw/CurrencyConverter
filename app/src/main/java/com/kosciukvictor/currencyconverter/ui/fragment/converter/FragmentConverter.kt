@@ -1,4 +1,4 @@
-package com.kosciukvictor.currencyconverter.ui.converter
+package com.kosciukvictor.currencyconverter.ui.fragment.converter
 
 import android.os.Bundle
 import android.view.LayoutInflater
