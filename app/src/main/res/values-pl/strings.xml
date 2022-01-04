@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Currency Converter</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_activity_nav">MainActivity</string>
+    <string name="converter">Konwerter</string>
+    <string name="rates">Kursy</string>
+    <string name="from_currency">Przelicz z</string>
+    <string name="to_currency">Przelicz na</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="loading_current_rates_please_wait">Proszę czekać, trwa ładowanie aktualnych kursów…</string>
+    <string name="something_went_wrong">Ups… Coś poszło nie tak. Odśwież połączenie w prawym, górnym rogu</string>
+    <string name="baseCur">Waluta podstawowa: </string>
+    <string name="updated">Zaktualizowano: </string>
+    <string name="base">Waluta podstawowa: </string>
+</resources>

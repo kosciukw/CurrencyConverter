@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="RtlCompat"
+    >
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.kosciukvictor.currencyconverter.domain.viewmodels.MainViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.converter.FragmentConverter"
+        >
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_vertical_start"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.03"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_vertical_end"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.97"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_horizontal_date"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.07"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_vertical_separator"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.65"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/text_view_date"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:padding="10dp"
+            android:textColor="@color/colorBlack"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@id/guideline_horizontal_date"
+            app:layout_constraintEnd_toEndOf="@id/guideline_vertical_separator"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@id/guideline_vertical_start"
+            app:layout_constraintTop_toTopOf="parent"
+
+
+            />
+
+        <TextView
+            android:id="@+id/key_refresh"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            style="@style/inputKeys"
+            android:text="↺"
+            android:textAlignment="textEnd"
+
+            android:textSize="22sp"
+
+            app:layout_constraintStart_toStartOf="@id/guideline_vertical_separator"
+            app:layout_constraintBottom_toTopOf="@id/text_view_base"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/guideline_vertical_end"
+
+            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:padding="10dp"
+            android:textSize="18sp"
+            android:textColor="@color/darkBlue"
+
+            app:layout_constraintBottom_toTopOf="@id/rates_list"
+            app:layout_constraintEnd_toEndOf="@id/guideline_vertical_separator"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@id/guideline_vertical_start"
+            app:layout_constraintTop_toBottomOf="@id/guideline_horizontal_date"
+            android:text="@string/base"
+
+
+            />
+
+        <TextView
+            android:id="@+id/text_view_base"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:padding="10dp"
+            android:textSize="18sp"
+            android:textColor="@color/darkBlue"
+            app:layout_constraintBottom_toTopOf="@id/rates_list"
+            app:layout_constraintEnd_toEndOf="@id/guideline_vertical_end"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@id/guideline_vertical_separator"
+            app:layout_constraintTop_toBottomOf="@id/guideline_horizontal_date"
+            android:textAlignment="textEnd"
+
+
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rates_list"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/guideline_vertical_end"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@id/guideline_vertical_start"
+
+            app:layout_constraintTop_toBottomOf="@id/text_view_base"
+            app:layout_constraintVertical_bias="0.0"
+            tools:listitem="@layout/item_currency">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
+

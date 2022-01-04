@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.kosciukvictor.currencyconverter.domain.viewmodels.MainViewModel" />
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.converter.FragmentConverter"
+
+        >
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_vertical_start"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.02"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_vertical_end"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.98"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_vertical_middle"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_vertical_quarter"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.25"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_horizontal_third"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.33"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/text_view_date"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:textAlignment="textStart"
+
+            android:textSize="@dimen/S"
+
+            app:layout_constraintEnd_toStartOf="@id/key_refresh"
+            app:layout_constraintStart_toStartOf="@id/guideline_vertical_start"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/fromTextView"
+
+
+            tools:text="22/11/2020"
+            />
+
+        <Button
+            android:id="@+id/key_refresh"
+            style="@style/inputKeys"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_gravity="end"
+            android:onClick="@{() -> viewmodel.getApiRates()"
+            android:text="↺"
+
+
+            android:textAlignment="textEnd"
+
+            android:textSize="@dimen/L"
+
+            app:layout_constraintEnd_toEndOf="@id/guideline_vertical_middle"
+            app:layout_constraintStart_toEndOf="@id/text_view_date"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/spinner_from"
+
+            />
+
+        <TextView
+            style="@style/inputKeys"
+            android:id="@+id/fromTextView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:text="@string/from_currency"
+            android:textAlignment="textStart"
+
+            android:textSize="@dimen/M"
+
+            app:layout_constraintEnd_toStartOf="@id/key_refresh"
+            app:layout_constraintStart_toStartOf="@id/guideline_vertical_start"
+            app:layout_constraintTop_toBottomOf="@id/text_view_date"
+            app:layout_constraintBottom_toBottomOf="@id/toTextView"
+
+            />
+
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/spinner_from"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_gravity="end"
+            android:fontFamily="sans-serif-condensed-light"
+            android:gravity="end"
+            android:spinnerMode="dialog"
+
+
+            app:layout_constraintEnd_toEndOf="@id/guideline_vertical_middle"
+            app:layout_constraintStart_toEndOf="@id/text_view_date"
+            app:layout_constraintTop_toBottomOf="@id/key_refresh"
+            app:layout_constraintBottom_toTopOf="@id/spinner_to"
+            />
+
+        <TextView
+            style="@style/inputKeys"
+            android:id="@+id/toTextView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:text="@string/to_currency"
+            android:textAlignment="textStart"
+
+            android:textSize="@dimen/M"
+
+            app:layout_constraintEnd_toStartOf="@id/key_refresh"
+            app:layout_constraintStart_toStartOf="@id/guideline_vertical_start"
+            app:layout_constraintTop_toBottomOf="@id/fromTextView"
+            app:layout_constraintBottom_toBottomOf="@id/guideline_horizontal_third"
+
+            />
+
+
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/spinner_to"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+
+            android:layout_gravity="end"
+            android:layout_weight="1"
+            android:fontFamily="sans-serif-condensed-light"
+            android:gravity="end"
+            android:spinnerMode="dialog"
+
+            app:layout_constraintEnd_toEndOf="@id/guideline_vertical_middle"
+            app:layout_constraintStart_toEndOf="@id/text_view_date"
+            app:layout_constraintTop_toBottomOf="@id/spinner_from"
+            app:layout_constraintBottom_toBottomOf="@id/guideline_horizontal_third"
+
+            />
+
+
+        <TextView
+            android:id="@+id/text_view_input"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/inputTextHeight"
+
+
+            android:text="@{viewmodel.inputEquation}"
+            android:textSize="@dimen/L"
+
+            tools:text="22.53 USD ="
+
+            app:layout_constraintTop_toBottomOf="@+id/guideline_horizontal_third"
+            app:layout_constraintStart_toStartOf="@id/guideline_vertical_start"
+            app:layout_constraintEnd_toEndOf="@id/guideline_vertical_middle"
+            app:layout_constraintBottom_toTopOf="@id/text_view_output"
+
+            />
+
+        <TextView
+            android:id="@+id/text_view_output"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+
+            android:text="@{viewmodel.outputEquation}"
+            android:textAlignment="textEnd"
+            android:textColor="@color/lightBlue"
+
+            android:textSize="@dimen/XL"
+
+            tools:text="122.53 PLN"
+            app:layout_constraintTop_toBottomOf="@id/text_view_input"
+            app:layout_constraintStart_toStartOf="@id/guideline_vertical_start"
+            app:layout_constraintEnd_toEndOf="@id/guideline_vertical_middle"
+            app:layout_constraintBottom_toBottomOf="parent"
+
+
+        />
+
+        <Button
+            android:id="@+id/key_7"
+            style="@style/inputKeys"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:onClick="@{() -> viewmodel.setNumericalInput(7, viewmodel.inputEquation)}"
+
+            android:text="7"
+            app:layout_constraintBottom_toTopOf="@id/key_4"
+            app:layout_constraintEnd_toStartOf="@id/key_8"
+            app:layout_constraintStart_toEndOf="@id/guideline_vertical_middle"
+            app:layout_constraintTop_toTopOf="parent"
+
+            />
+
+        <Button
+            android:id="@+id/key_4"
+            style="@style/inputKeys"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:onClick="@{() -> viewmodel.setNumericalInput(4, viewmodel.inputEquation)}"
+
+            android:text="4"
+            app:layout_constraintBottom_toTopOf="@id/key_1"
+            app:layout_constraintEnd_toStartOf="@id/key_5"
+            app:layout_constraintStart_toEndOf="@id/guideline_vertical_middle"
+
+            app:layout_constraintTop_toBottomOf="@id/key_7" />
+
+        <Button
+            android:id="@+id/key_1"
+            style="@style/inputKeys"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:onClick="@{() -> viewmodel.setNumericalInput(1, viewmodel.inputEquation)}"
+
+            android:text="1"
+            app:layout_constraintBottom_toTopOf="@id/key_remove"
+            app:layout_constraintEnd_toStartOf="@id/key_2"
+            app:layout_constraintStart_toEndOf="@id/guideline_vertical_middle"
+
+            app:layout_constraintTop_toBottomOf="@id/key_4" />
+
+        <Button
+            android:id="@+id/key_remove"
+            style="@style/inputKeys"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:longClickable="true"
+
+
+            android:onClick="@{() -> viewmodel.removeLastInput(viewmodel.inputEquation)}"
+            android:text="⌫"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/key_0"
+            app:layout_constraintStart_toEndOf="@id/guideline_vertical_middle"
+
+            app:layout_constraintTop_toBottomOf="@id/key_1" />
+
+
+        <Button
+            android:id="@+id/key_8"
+            style="@style/inputKeys"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:onClick="@{() -> viewmodel.setNumericalInput(8, viewmodel.inputEquation)}"
+
+            android:text="8"
+            app:layout_constraintBottom_toTopOf="@id/key_5"
+            app:layout_constraintEnd_toStartOf="@id/key_9"
+            app:layout_constraintStart_toEndOf="@id/key_7"
+
+            app:layout_constraintTop_toTopOf="parent"
+
+            />
+
+        <Button
+            android:id="@+id/key_5"
+            style="@style/inputKeys"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:onClick="@{() -> viewmodel.setNumericalInput(5, viewmodel.inputEquation)}"
+
+            android:text="5"
+            app:layout_constraintBottom_toTopOf="@id/key_2"
+            app:layout_constraintEnd_toStartOf="@id/key_6"
+            app:layout_constraintStart_toEndOf="@id/key_4"
+
+            app:layout_constraintTop_toBottomOf="@id/key_8" />
+
+        <Button
+            android:id="@+id/key_2"
+            style="@style/inputKeys"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:onClick="@{() -> viewmodel.setNumericalInput(2, viewmodel.inputEquation)}"
+
+            android:text="2"
+            app:layout_constraintBottom_toTopOf="@id/key_0"
+            app:layout_constraintEnd_toStartOf="@id/key_3"
+            app:layout_constraintStart_toEndOf="@id/key_1"
+
+            app:layout_constraintTop_toBottomOf="@id/key_5" />
+
+        <Button
+            android:id="@+id/key_0"
+            style="@style/inputKeys"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:onClick="@{() -> viewmodel.setNumericalInput(0, viewmodel.inputEquation)}"
+
+            android:text="0"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/key_dot"
+            app:layout_constraintStart_toEndOf="@id/key_remove"
+
+            app:layout_constraintTop_toBottomOf="@id/key_2" />
+
+
+        <Button
+            android:id="@+id/key_9"
+            style="@style/inputKeys"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:onClick="@{() -> viewmodel.setNumericalInput(9, viewmodel.inputEquation)}"
+
+            android:text="9"
+            app:layout_constraintBottom_toTopOf="@id/key_6"
+            app:layout_constraintEnd_toEndOf="@id/guideline_vertical_end"
+            app:layout_constraintStart_toEndOf="@id/key_8"
+
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/key_6"
+            style="@style/inputKeys"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:onClick="@{() -> viewmodel.setNumericalInput(6, viewmodel.inputEquation)}"
+
+            android:text="6"
+            app:layout_constraintBottom_toTopOf="@id/key_3"
+            app:layout_constraintEnd_toEndOf="@id/guideline_vertical_end"
+            app:layout_constraintStart_toEndOf="@id/key_5"
+
+            app:layout_constraintTop_toBottomOf="@id/key_9" />
+
+        <Button
+            android:id="@+id/key_3"
+            style="@style/inputKeys"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:onClick="@{() -> viewmodel.setNumericalInput(3, viewmodel.inputEquation)}"
+
+            android:text="3"
+            app:layout_constraintBottom_toTopOf="@id/key_dot"
+            app:layout_constraintEnd_toEndOf="@id/guideline_vertical_end"
+            app:layout_constraintStart_toEndOf="@id/key_2"
+
+            app:layout_constraintTop_toBottomOf="@id/key_6" />
+
+        <Button
+            android:id="@+id/key_dot"
+            style="@style/inputKeys"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:onClick="@{() -> viewmodel.setInputComma(viewmodel.inputEquation)}"
+
+            android:text=","
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/guideline_vertical_end"
+            app:layout_constraintStart_toEndOf="@id/key_0"
+
+            app:layout_constraintTop_toBottomOf="@id/key_3"
+
+            />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
+
