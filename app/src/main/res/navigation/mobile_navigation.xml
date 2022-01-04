@@ -7,13 +7,13 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.kosciukvictor.currencyconverter.ui.converter.FragmentConverter"
+        android:name="com.kosciukvictor.currencyconverter.ui.fragment.converter.FragmentConverter"
         android:label="@string/converter"
         tools:layout="@layout/fragment_converter" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.kosciukvictor.currencyconverter.ui.rates.RatesListFragment"
+        android:name="com.kosciukvictor.currencyconverter.ui.fragment.rates.RatesListFragment"
         android:label="@string/rates"
         tools:layout="@layout/fragment_rates" />
 
