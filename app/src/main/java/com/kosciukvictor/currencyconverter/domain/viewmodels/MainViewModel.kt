@@ -2,10 +2,17 @@ package com.kosciukvictor.currencyconverter.domain.viewmodels
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.kosciukvictor.currencyconverter.domain.usecases.*
 import com.kosciukvictor.currencyconverter.domain.utils.todo
 
 
+
 class MainViewModel(
+    private val clearUseCase: ClearUseCase,
+    private val setCommaUseCase: SetCommaUseCase,
+    private val setNumberUseCase: SetNumberUseCase,
+    private val removeLastInputUseCase: RemoveLastInputUseCase
 ) : ViewModel() {
 
     private val _exception: MutableLiveData<String> = MutableLiveData()
@@ -37,16 +44,45 @@ class MainViewModel(
         todo()
 
     fun setNumericalInput(input: Int, equation: String) =
-        todo()
+        setNumberUseCase(Pair(input, equation), viewModelScope) { result ->
+            result.onSuccess {
+                _inputEquation.value = it
+            }
+            result.onFailure {
+                _exception.value = it.message
+            }
+        }
 
     fun setInputComma(equation: String) =
-        todo()
+        setCommaUseCase(equation, viewModelScope) { result ->
+            result.onSuccess {
+                _inputEquation.value = it
+            }
+            result.onFailure {
+                _exception.value = it.message
+            }
+        }
 
     fun removeLastInput(equation: String) =
-        todo()
+        removeLastInputUseCase(equation, viewModelScope) { result ->
+            result.onSuccess {
+                _inputEquation.value = it
+            }
+            result.onFailure {
+                _exception.value = it.message
+            }
+        }
 
     fun clear() =
-        todo()
+        clearUseCase(Unit, viewModelScope) { result ->
+            result.onSuccess {
+                _inputEquation.value = it
+                _outputEquation.value = it
+            }
+            result.onFailure {
+                _exception.value = it.message
+            }
+        }
 
     fun convertValues(
         map: Map<String, Int>?,
