@@ -6,7 +6,7 @@ import com.kosciukvictor.currencyconverter.domain.repositories.input.InputReposi
 import com.kosciukvictor.currencyconverter.domain.usecases.*
 import com.kosciukvictor.currencyconverter.domain.viewmodels.MainViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import org.koin.android.viewmodel.dsl.viewModel
+import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 @ExperimentalCoroutinesApi
