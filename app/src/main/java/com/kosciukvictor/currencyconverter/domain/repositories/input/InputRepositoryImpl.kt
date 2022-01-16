@@ -23,7 +23,7 @@ class InputRepositoryImpl: InputRepository {
         val tmpEquation = currentEquation ?: clearEquation()
 
         if (tmpEquation.length > INPUT_LIMIT)
-            throw java.lang.IllegalStateException("Equation too long")
+            throw java.lang.IllegalStateException(EQUATION_TOO_LONG_ERROR_MSG)
 
         tmpEquation.plus(inputNumber)
     } catch (e: Exception) {
@@ -32,11 +32,11 @@ class InputRepositoryImpl: InputRepository {
 
     override fun setInputComma(currentEquation: String?) = try {
         if (currentEquation.isNullOrEmpty()) {
-            "0."
+            EMPTY_EQUATION_COMMA
         } else if (currentEquation.length > INPUT_LIMIT) {
             throw java.lang.IllegalStateException("Equation too long")
-        } else if (!currentEquation.contains(".")) {
-            currentEquation.plus(".")
+        } else if (!currentEquation.contains(COMMA_SYMBOL)) {
+            currentEquation.plus(COMMA_SYMBOL)
         } else
             currentEquation
     } catch (e: Exception) {
@@ -47,5 +47,8 @@ class InputRepositoryImpl: InputRepository {
 
     companion object {
         const val INPUT_LIMIT = 14
+        const val EMPTY_EQUATION_COMMA = "0."
+        const val COMMA_SYMBOL = "."
+        const val EQUATION_TOO_LONG_ERROR_MSG = "Equation too long"
     }
 }
