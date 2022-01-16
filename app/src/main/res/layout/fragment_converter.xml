@@ -11,376 +11,376 @@
             type="com.kosciukvictor.currencyconverter.domain.viewmodels.MainViewModel" />
     </data>
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.fragment.converter.FragmentConverter"
-    >
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_vertical_start"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.03"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_vertical_end"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.97"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_horizontal_date"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.07"
-        app:layout_constraintTop_toTopOf="parent"
-        />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_vertical_separator"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.65"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/text_view_date"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:textColor="@color/colorBlack"
-        android:textSize="@dimen/S"
-        app:layout_constraintBottom_toTopOf="@id/guideline_horizontal_date"
-        app:layout_constraintEnd_toEndOf="@id/guideline_vertical_separator"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@id/guideline_vertical_start"
-        app:layout_constraintTop_toTopOf="parent"
-
-
-        />
-
-    <TextView
-        android:id="@+id/key_refresh"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        style="@style/inputKeys"
-        android:text="↺"
-        android:textAlignment="textEnd"
-
-        android:textSize="@dimen/L"
-
-        app:layout_constraintStart_toStartOf="@id/guideline_vertical_separator"
-        app:layout_constraintBottom_toTopOf="@id/guideline_horizontal_date"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/guideline_vertical_end"
-
-        android:onClick="@{() -> viewmodel.getApiRates()"
-        />
-
-    <TextView
-        android:id="@+id/text_view_input"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/inputTextHeight"
-        android:textColor="@color/colorBlack"
-
-        android:textSize="@dimen/L"
-        android:textAlignment="textEnd"
-        tools:text="22.53 USD ="
-
-        app:layout_constraintStart_toStartOf="@id/guideline_vertical_start"
-        app:layout_constraintEnd_toEndOf="@id/guideline_vertical_end"
-        app:layout_constraintTop_toBottomOf="@id/key_refresh"
-        app:layout_constraintBottom_toTopOf="@id/text_view_output"
-        android:text="@{viewmodel.inputEquation}"
-        />
-
-    <TextView
-        android:id="@+id/text_view_output"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/OutputTextHeight"
-
-        android:textSize="@dimen/XL"
-        tools:text="122.53 PLN"
-        android:textColor="@color/lightBlue"
-        android:breakStrategy="high_quality"
-
-        app:layout_constraintStart_toStartOf="@id/guideline_vertical_start"
-        app:layout_constraintEnd_toEndOf="@id/guideline_vertical_end"
-        app:layout_constraintTop_toBottomOf="@id/text_view_input"
-        app:layout_constraintBottom_toTopOf="@id/text_view_from"
-
-        android:text="@{viewmodel.outputEquation}"
-        />
-
-    <TextView
-        android:id="@+id/text_view_from"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:text="@string/from_currency"
-        android:gravity="center"
-        android:textSize="@dimen/M"
-        style="@style/inputKeys"
-        android:textAlignment="textStart"
-
-        app:layout_constraintStart_toStartOf="@id/guideline_vertical_start"
-        app:layout_constraintEnd_toEndOf="@id/guideline_vertical_separator"
-        app:layout_constraintTop_toBottomOf="@id/text_view_output"
-        app:layout_constraintBottom_toTopOf="@id/text_view_to"
-        />
-
-
-    <androidx.appcompat.widget.AppCompatSpinner
-        android:id="@+id/spinner_from"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_gravity="end"
-        android:gravity="end"
-        android:spinnerMode="dialog"
-        android:fontFamily="sans-serif-condensed-light"
-
-        app:layout_constraintStart_toStartOf="@id/guideline_vertical_separator"
-        app:layout_constraintEnd_toEndOf="@id/guideline_vertical_end"
-        app:layout_constraintTop_toBottomOf="@id/text_view_output"
-        app:layout_constraintBottom_toTopOf="@id/text_view_to"
-        />
-
-
-
-    <TextView
-        android:id="@+id/text_view_to"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="@string/to_currency"
-        android:gravity="center"
-        android:textSize="@dimen/M"
-        style="@style/inputKeys"
-
-        android:textAlignment="textStart"
-        app:layout_constraintStart_toStartOf="@id/guideline_vertical_start"
-        app:layout_constraintEnd_toEndOf="@id/guideline_vertical_separator"
-        app:layout_constraintTop_toBottomOf="@id/text_view_from"
-        app:layout_constraintBottom_toBottomOf="@id/guideline_horizontal_separator"
-        />
-
-
-    <androidx.appcompat.widget.AppCompatSpinner
-        android:id="@+id/spinner_to"
-        android:layout_width="0dp"
-
-        android:layout_height="0dp"
-        android:layout_gravity="end"
-        android:gravity="end"
-        android:spinnerMode="dialog"
-        android:fontFamily="sans-serif-condensed-light"
-
-        app:layout_constraintStart_toStartOf="@id/guideline_vertical_separator"
-        app:layout_constraintEnd_toEndOf="@id/guideline_vertical_end"
-        app:layout_constraintTop_toBottomOf="@id/text_view_from"
-        app:layout_constraintBottom_toBottomOf="@id/guideline_horizontal_separator"
-
-        />
-
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_horizontal_separator"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/key_7"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="7"
-        style="@style/inputKeys"
-
-        app:layout_constraintBottom_toTopOf="@id/key_4"
-        app:layout_constraintEnd_toStartOf="@id/key_8"
-        app:layout_constraintStart_toStartOf="@id/guideline_vertical_start"
-        app:layout_constraintTop_toBottomOf="@id/guideline_horizontal_separator"
-        android:onClick="@{() -> viewmodel.setNumericalInput(7, viewmodel.inputEquation)}"
-
-        />
-
-    <Button
-        android:id="@+id/key_4"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="4"
-        style="@style/inputKeys"
-        app:layout_constraintBottom_toTopOf="@id/key_1"
-        app:layout_constraintEnd_toStartOf="@id/key_5"
-        app:layout_constraintStart_toStartOf="@id/guideline_vertical_start"
-        app:layout_constraintTop_toBottomOf="@id/key_7"
-        android:onClick="@{() -> viewmodel.setNumericalInput(4, viewmodel.inputEquation)}"
-
-        />
-
-    <Button
-        android:id="@+id/key_1"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="1"
-        style="@style/inputKeys"
-
-        app:layout_constraintBottom_toTopOf="@id/key_remove"
-        app:layout_constraintEnd_toStartOf="@id/key_2"
-        app:layout_constraintStart_toStartOf="@id/guideline_vertical_start"
-        app:layout_constraintTop_toBottomOf="@id/key_4"
-
-        android:onClick="@{() -> viewmodel.setNumericalInput(1, viewmodel.inputEquation)}"
-        />
-
-
-    <Button
-        android:id="@+id/key_remove"
-        style="@style/inputKeys"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:longClickable="true"
-
-        android:text="⌫"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/key_0"
-        app:layout_constraintStart_toStartOf="@id/guideline_vertical_start"
-
-        app:layout_constraintTop_toBottomOf="@id/key_1"
-
-        android:onClick="@{() -> viewmodel.removeLastInput(viewmodel.inputEquation)}"
-        />
-
-    <Button
-        android:id="@+id/key_8"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="8"
-        style="@style/inputKeys"
-
-        app:layout_constraintBottom_toTopOf="@id/key_5"
-        app:layout_constraintEnd_toStartOf="@id/key_9"
-        app:layout_constraintStart_toEndOf="@id/key_7"
-        app:layout_constraintTop_toBottomOf="@id/guideline_horizontal_separator"
-        android:onClick="@{() -> viewmodel.setNumericalInput(8, viewmodel.inputEquation)}"
-
-        />
-
-    <Button
-        android:id="@+id/key_5"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        style="@style/inputKeys"
-        android:text="5"
-
-        app:layout_constraintBottom_toTopOf="@id/key_2"
-        app:layout_constraintEnd_toStartOf="@id/key_6"
-        app:layout_constraintStart_toEndOf="@id/key_4"
-        app:layout_constraintTop_toBottomOf="@id/key_8"
-
-        android:onClick="@{() -> viewmodel.setNumericalInput(5, viewmodel.inputEquation)}"
-        />
-
-    <Button
-        android:id="@+id/key_2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="2"
-        style="@style/inputKeys"
-
-        app:layout_constraintBottom_toTopOf="@id/key_0"
-        app:layout_constraintEnd_toStartOf="@id/key_3"
-        app:layout_constraintStart_toEndOf="@id/key_1"
-        app:layout_constraintTop_toBottomOf="@id/key_5"
-
-        android:onClick="@{() -> viewmodel.setNumericalInput(2, viewmodel.inputEquation)}"
-
-        />
-
-    <Button
-        android:id="@+id/key_0"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="0"
-        style="@style/inputKeys"
-
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/key_dot"
-        app:layout_constraintStart_toEndOf="@id/key_remove"
-        app:layout_constraintTop_toBottomOf="@id/key_2"
-
-        android:onClick="@{() -> viewmodel.setNumericalInput(0, viewmodel.inputEquation)}"
-        />
-
-
-    <Button
-        android:id="@+id/key_9"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="9"
-        style="@style/inputKeys"
-
-        app:layout_constraintBottom_toTopOf="@id/key_6"
-        app:layout_constraintEnd_toEndOf="@id/guideline_vertical_end"
-        app:layout_constraintStart_toEndOf="@id/key_8"
-        app:layout_constraintTop_toBottomOf="@id/guideline_horizontal_separator"
-
-        android:onClick="@{() -> viewmodel.setNumericalInput(9, viewmodel.inputEquation)}"
-        />
-
-    <Button
-        android:id="@+id/key_6"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="6"
-        style="@style/inputKeys"
-
-        app:layout_constraintBottom_toTopOf="@id/key_3"
-        app:layout_constraintEnd_toEndOf="@id/guideline_vertical_end"
-        app:layout_constraintStart_toEndOf="@id/key_5"
-        app:layout_constraintTop_toBottomOf="@id/key_9"
-
-        android:onClick="@{() -> viewmodel.setNumericalInput(6, viewmodel.inputEquation)}"
-        />
-
-    <Button
-        android:id="@+id/key_3"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="3"
-        style="@style/inputKeys"
-
-        app:layout_constraintBottom_toTopOf="@id/key_dot"
-        app:layout_constraintEnd_toEndOf="@id/guideline_vertical_end"
-        app:layout_constraintStart_toEndOf="@id/key_2"
-        app:layout_constraintTop_toBottomOf="@id/key_6"
-
-        android:onClick="@{() -> viewmodel.setNumericalInput(3, viewmodel.inputEquation)}"
-        />
-
-    <Button
-        android:id="@+id/key_dot"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text=","
-        style="@style/inputKeys"
-
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/guideline_vertical_end"
-        app:layout_constraintStart_toEndOf="@id/key_0"
-        app:layout_constraintTop_toBottomOf="@id/key_3"
-
-        android:onClick="@{() -> viewmodel.setInputComma(viewmodel.inputEquation)}"
-        />
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.fragments.converter.FragmentConverter"
+        >
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_vertical_start"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.03"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_vertical_end"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.97"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_horizontal_date"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.07"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_vertical_separator"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.65"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/text_view_date"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/S"
+            app:layout_constraintBottom_toTopOf="@id/guideline_horizontal_date"
+            app:layout_constraintEnd_toEndOf="@id/guideline_vertical_separator"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@id/guideline_vertical_start"
+            app:layout_constraintTop_toTopOf="parent"
+
+            android:text="@{viewmodel.rates.date}"
+
+            />
+
+        <TextView
+            android:id="@+id/key_refresh"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            style="@style/inputKeys"
+            android:text="↺"
+            android:textAlignment="textEnd"
+
+            android:textSize="@dimen/L"
+
+            app:layout_constraintStart_toStartOf="@id/guideline_vertical_separator"
+            app:layout_constraintBottom_toTopOf="@id/guideline_horizontal_date"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/guideline_vertical_end"
+
+            android:onClick="@{() -> viewmodel.getApiRates()"
+            />
+
+        <TextView
+            android:id="@+id/text_view_input"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/inputTextHeight"
+            android:textColor="@color/colorBlack"
+
+            android:textSize="@dimen/L"
+            android:textAlignment="textEnd"
+            tools:text="22.53 USD ="
+
+            app:layout_constraintStart_toStartOf="@id/guideline_vertical_start"
+            app:layout_constraintEnd_toEndOf="@id/guideline_vertical_end"
+            app:layout_constraintTop_toBottomOf="@id/key_refresh"
+            app:layout_constraintBottom_toTopOf="@id/text_view_output"
+            android:text="@{viewmodel.inputEquation}"
+            />
+
+        <TextView
+            android:id="@+id/text_view_output"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/OutputTextHeight"
+
+            android:textSize="@dimen/XL"
+            tools:text="122.53 PLN"
+            android:textColor="@color/lightBlue"
+            android:breakStrategy="high_quality"
+
+            app:layout_constraintStart_toStartOf="@id/guideline_vertical_start"
+            app:layout_constraintEnd_toEndOf="@id/guideline_vertical_end"
+            app:layout_constraintTop_toBottomOf="@id/text_view_input"
+            app:layout_constraintBottom_toTopOf="@id/text_view_from"
+
+            android:text="@{viewmodel.outputEquation}"
+            />
+
+        <TextView
+            android:id="@+id/text_view_from"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="@string/from_currency"
+            android:gravity="center"
+            android:textSize="@dimen/M"
+            style="@style/inputKeys"
+            android:textAlignment="textStart"
+
+            app:layout_constraintStart_toStartOf="@id/guideline_vertical_start"
+            app:layout_constraintEnd_toEndOf="@id/guideline_vertical_separator"
+            app:layout_constraintTop_toBottomOf="@id/text_view_output"
+            app:layout_constraintBottom_toTopOf="@id/text_view_to"
+            />
+
+
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/spinner_from"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_gravity="end"
+            android:gravity="end"
+            android:spinnerMode="dialog"
+            android:fontFamily="sans-serif-condensed-light"
+
+            app:layout_constraintStart_toStartOf="@id/guideline_vertical_separator"
+            app:layout_constraintEnd_toEndOf="@id/guideline_vertical_end"
+            app:layout_constraintTop_toBottomOf="@id/text_view_output"
+            app:layout_constraintBottom_toTopOf="@id/text_view_to"
+            />
+
+
+
+        <TextView
+            android:id="@+id/text_view_to"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="@string/to_currency"
+            android:gravity="center"
+            android:textSize="@dimen/M"
+            style="@style/inputKeys"
+
+            android:textAlignment="textStart"
+            app:layout_constraintStart_toStartOf="@id/guideline_vertical_start"
+            app:layout_constraintEnd_toEndOf="@id/guideline_vertical_separator"
+            app:layout_constraintTop_toBottomOf="@id/text_view_from"
+            app:layout_constraintBottom_toBottomOf="@id/guideline_horizontal_separator"
+            />
+
+
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/spinner_to"
+            android:layout_width="0dp"
+
+            android:layout_height="0dp"
+            android:layout_gravity="end"
+            android:gravity="end"
+            android:spinnerMode="dialog"
+            android:fontFamily="sans-serif-condensed-light"
+
+            app:layout_constraintStart_toStartOf="@id/guideline_vertical_separator"
+            app:layout_constraintEnd_toEndOf="@id/guideline_vertical_end"
+            app:layout_constraintTop_toBottomOf="@id/text_view_from"
+            app:layout_constraintBottom_toBottomOf="@id/guideline_horizontal_separator"
+
+            />
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_horizontal_separator"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.5"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/key_7"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="7"
+            style="@style/inputKeys"
+
+            app:layout_constraintBottom_toTopOf="@id/key_4"
+            app:layout_constraintEnd_toStartOf="@id/key_8"
+            app:layout_constraintStart_toStartOf="@id/guideline_vertical_start"
+            app:layout_constraintTop_toBottomOf="@id/guideline_horizontal_separator"
+            android:onClick="@{() -> viewmodel.setNumericalInput(7, viewmodel.inputEquation)}"
+
+            />
+
+        <Button
+            android:id="@+id/key_4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="4"
+            style="@style/inputKeys"
+            app:layout_constraintBottom_toTopOf="@id/key_1"
+            app:layout_constraintEnd_toStartOf="@id/key_5"
+            app:layout_constraintStart_toStartOf="@id/guideline_vertical_start"
+            app:layout_constraintTop_toBottomOf="@id/key_7"
+            android:onClick="@{() -> viewmodel.setNumericalInput(4, viewmodel.inputEquation)}"
+
+            />
+
+        <Button
+            android:id="@+id/key_1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="1"
+            style="@style/inputKeys"
+
+            app:layout_constraintBottom_toTopOf="@id/key_remove"
+            app:layout_constraintEnd_toStartOf="@id/key_2"
+            app:layout_constraintStart_toStartOf="@id/guideline_vertical_start"
+            app:layout_constraintTop_toBottomOf="@id/key_4"
+
+            android:onClick="@{() -> viewmodel.setNumericalInput(1, viewmodel.inputEquation)}"
+            />
+
+
+        <Button
+            android:id="@+id/key_remove"
+            style="@style/inputKeys"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:longClickable="true"
+
+            android:text="⌫"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/key_0"
+            app:layout_constraintStart_toStartOf="@id/guideline_vertical_start"
+
+            app:layout_constraintTop_toBottomOf="@id/key_1"
+
+            android:onClick="@{() -> viewmodel.removeLastInput(viewmodel.inputEquation)}"
+            />
+
+        <Button
+            android:id="@+id/key_8"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="8"
+            style="@style/inputKeys"
+
+            app:layout_constraintBottom_toTopOf="@id/key_5"
+            app:layout_constraintEnd_toStartOf="@id/key_9"
+            app:layout_constraintStart_toEndOf="@id/key_7"
+            app:layout_constraintTop_toBottomOf="@id/guideline_horizontal_separator"
+            android:onClick="@{() -> viewmodel.setNumericalInput(8, viewmodel.inputEquation)}"
+
+            />
+
+        <Button
+            android:id="@+id/key_5"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            style="@style/inputKeys"
+            android:text="5"
+
+            app:layout_constraintBottom_toTopOf="@id/key_2"
+            app:layout_constraintEnd_toStartOf="@id/key_6"
+            app:layout_constraintStart_toEndOf="@id/key_4"
+            app:layout_constraintTop_toBottomOf="@id/key_8"
+
+            android:onClick="@{() -> viewmodel.setNumericalInput(5, viewmodel.inputEquation)}"
+            />
+
+        <Button
+            android:id="@+id/key_2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="2"
+            style="@style/inputKeys"
+
+            app:layout_constraintBottom_toTopOf="@id/key_0"
+            app:layout_constraintEnd_toStartOf="@id/key_3"
+            app:layout_constraintStart_toEndOf="@id/key_1"
+            app:layout_constraintTop_toBottomOf="@id/key_5"
+
+            android:onClick="@{() -> viewmodel.setNumericalInput(2, viewmodel.inputEquation)}"
+
+            />
+
+        <Button
+            android:id="@+id/key_0"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="0"
+            style="@style/inputKeys"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/key_dot"
+            app:layout_constraintStart_toEndOf="@id/key_remove"
+            app:layout_constraintTop_toBottomOf="@id/key_2"
+
+            android:onClick="@{() -> viewmodel.setNumericalInput(0, viewmodel.inputEquation)}"
+            />
+
+
+        <Button
+            android:id="@+id/key_9"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="9"
+            style="@style/inputKeys"
+
+            app:layout_constraintBottom_toTopOf="@id/key_6"
+            app:layout_constraintEnd_toEndOf="@id/guideline_vertical_end"
+            app:layout_constraintStart_toEndOf="@id/key_8"
+            app:layout_constraintTop_toBottomOf="@id/guideline_horizontal_separator"
+
+            android:onClick="@{() -> viewmodel.setNumericalInput(9, viewmodel.inputEquation)}"
+            />
+
+        <Button
+            android:id="@+id/key_6"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="6"
+            style="@style/inputKeys"
+
+            app:layout_constraintBottom_toTopOf="@id/key_3"
+            app:layout_constraintEnd_toEndOf="@id/guideline_vertical_end"
+            app:layout_constraintStart_toEndOf="@id/key_5"
+            app:layout_constraintTop_toBottomOf="@id/key_9"
+
+            android:onClick="@{() -> viewmodel.setNumericalInput(6, viewmodel.inputEquation)}"
+            />
+
+        <Button
+            android:id="@+id/key_3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="3"
+            style="@style/inputKeys"
+
+            app:layout_constraintBottom_toTopOf="@id/key_dot"
+            app:layout_constraintEnd_toEndOf="@id/guideline_vertical_end"
+            app:layout_constraintStart_toEndOf="@id/key_2"
+            app:layout_constraintTop_toBottomOf="@id/key_6"
+
+            android:onClick="@{() -> viewmodel.setNumericalInput(3, viewmodel.inputEquation)}"
+            />
+
+        <Button
+            android:id="@+id/key_dot"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text=","
+            style="@style/inputKeys"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/guideline_vertical_end"
+            app:layout_constraintStart_toEndOf="@id/key_0"
+            app:layout_constraintTop_toBottomOf="@id/key_3"
+
+            android:onClick="@{() -> viewmodel.setInputComma(viewmodel.inputEquation)}"
+            />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
-

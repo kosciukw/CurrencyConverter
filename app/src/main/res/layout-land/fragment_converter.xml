@@ -14,7 +14,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.fragment.converter.FragmentConverter"
+        tools:context=".ui.fragments.converter.FragmentConverter"
 
         >
 
@@ -65,6 +65,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:gravity="center"
+            android:text="@{viewmodel.rates.date}"
             android:textAlignment="textStart"
 
             android:textSize="@dimen/S"
@@ -207,7 +208,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
 
 
-        />
+            />
 
         <Button
             android:id="@+id/key_7"
@@ -389,4 +390,3 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
-
