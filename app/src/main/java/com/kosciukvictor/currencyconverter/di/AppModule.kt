@@ -26,6 +26,9 @@ val appModule = module {
     factory { SetCommaUseCase(inputRepository = get()) }
     factory { RemoveLastInputUseCase(inputRepository = get()) }
     factory { ConvertUseCase(currencyConverter = get()) }
+    factory { GetRatesUseCase(currencyExchangeService = get()) }
+    factory { GetCurrencyPreferencesUseCase( currencyPreferencesRepository = get()) }
+    factory { SaveCurrencyPreferencesUseCase(currencyPreferencesRepository = get()) }
 
     factory<CurrencyConverter> {
         CurrencyConverterImpl(
@@ -44,7 +47,10 @@ val appModule = module {
             setCommaUseCase = get(),
             setNumberUseCase = get(),
             removeLastInputUseCase = get(),
-            convertUseCase = get()
+            convertUseCase = get(),
+            getRatesUseCase = get(),
+            getCurrencyPreferencesUseCase = get(),
+            saveCurrencyPreferencesUseCase = get()
         )
     }
 }

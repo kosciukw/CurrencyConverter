@@ -3,9 +3,8 @@ package com.kosciukvictor.currencyconverter.domain.viewmodels
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.kosciukvictor.currencyconverter.domain.api.models.ApiRates
 import com.kosciukvictor.currencyconverter.domain.usecases.*
-import com.kosciukvictor.currencyconverter.domain.utils.todo
-
 
 
 class MainViewModel(
@@ -13,14 +12,18 @@ class MainViewModel(
     private val setCommaUseCase: SetCommaUseCase,
     private val setNumberUseCase: SetNumberUseCase,
     private val removeLastInputUseCase: RemoveLastInputUseCase,
-    private val convertUseCase: ConvertUseCase
-    ) : ViewModel() {
+    private val convertUseCase: ConvertUseCase,
+    private val getRatesUseCase: GetRatesUseCase,
+    private val getCurrencyPreferencesUseCase: GetCurrencyPreferencesUseCase,
+    private val saveCurrencyPreferencesUseCase: SaveCurrencyPreferencesUseCase
+
+) : ViewModel() {
 
     private val _exception: MutableLiveData<String> = MutableLiveData()
     val exception = _exception
 
-    private val _rates: MutableLiveData<Any> = MutableLiveData()
-    val rates = _rates // TODO: 04.01.2022
+    private val _rates: MutableLiveData<ApiRates> = MutableLiveData()
+    val rates = _rates
 
     private val _inputEquation: MutableLiveData<String> = MutableLiveData("")
     val inputEquation = _inputEquation
@@ -34,15 +37,29 @@ class MainViewModel(
     private val _setPrefCurr: MutableLiveData<Unit> = MutableLiveData()
 
     init {
-//        getApiRates()
+        getApiRates()
     }
 
 
     fun getCurrencyPreferences() =
-        todo()
+        getCurrencyPreferencesUseCase(Unit, viewModelScope) { result ->
+            result.onSuccess {
+                _prefCurr.value = it
+            }
+            result.onFailure {
+                _exception.value = it.localizedMessage
+            }
+        }
 
     fun saveCurrencyPreferences(key: String, position: Int) =
-        todo()
+        saveCurrencyPreferencesUseCase(Pair(key, position), viewModelScope) { result ->
+            result.onSuccess {
+                _setPrefCurr.value = Unit
+            }
+            result.onFailure {
+                _exception.value = it.localizedMessage
+            }
+        }
 
     fun setNumericalInput(input: Int, equation: String) =
         setNumberUseCase(Pair(input, equation), viewModelScope) { result ->
@@ -101,6 +118,14 @@ class MainViewModel(
         }
 
     fun getApiRates() =
-        todo()
+        getRatesUseCase(Unit, viewModelScope) { result ->
+            result.onSuccess {
+                _rates.value = it
+                getCurrencyPreferences()
+            }
+            result.onFailure {
+                _exception.value = it.localizedMessage
+            }
+        }
 }
 

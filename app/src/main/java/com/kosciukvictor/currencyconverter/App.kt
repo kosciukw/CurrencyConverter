@@ -3,6 +3,7 @@ package com.kosciukvictor.currencyconverter
 import android.app.Application
 import com.kosciukvictor.currencyconverter.di.apiModule
 import com.kosciukvictor.currencyconverter.di.appModule
+import com.kosciukvictor.currencyconverter.di.preferences.preferencesModule
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.module.Module
@@ -26,7 +27,8 @@ class App : Application() {
     private fun provideModules(): List<Module> {
         return listOf(
             appModule,
-            apiModule
+            apiModule,
+            preferencesModule
         )
     }
 }
