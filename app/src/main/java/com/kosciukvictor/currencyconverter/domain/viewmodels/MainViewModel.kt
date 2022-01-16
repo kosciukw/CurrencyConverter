@@ -65,6 +65,7 @@ class MainViewModel(
         setNumberUseCase(Pair(input, equation), viewModelScope) { result ->
             result.onSuccess {
                 _inputEquation.value = it
+                convertValues(prefCurr.value, rates.value?.rates, it)
             }
             result.onFailure {
                 _exception.value = it.message
@@ -75,6 +76,7 @@ class MainViewModel(
         setCommaUseCase(equation, viewModelScope) { result ->
             result.onSuccess {
                 _inputEquation.value = it
+                convertValues(prefCurr.value, rates.value?.rates, it)
             }
             result.onFailure {
                 _exception.value = it.message
@@ -85,6 +87,7 @@ class MainViewModel(
         removeLastInputUseCase(equation, viewModelScope) { result ->
             result.onSuccess {
                 _inputEquation.value = it
+                convertValues(prefCurr.value, rates.value?.rates, it)
             }
             result.onFailure {
                 _exception.value = it.message

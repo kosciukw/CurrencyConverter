@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.internal.LinkedTreeMap
@@ -43,6 +44,9 @@ class RatesListFragment : Fragment() {
     }
 
     private fun subscribeObservers() {
+        viewmodel.rates.observe(viewLifecycleOwner, Observer {
+            setupRatesList(it.rates as LinkedTreeMap<String, Double>)
+        })
     }
 
     private fun setupRatesList(ratesTree: LinkedTreeMap<String, Double>) {
