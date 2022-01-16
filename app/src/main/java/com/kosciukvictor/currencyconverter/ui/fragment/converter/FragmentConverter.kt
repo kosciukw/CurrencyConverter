@@ -55,6 +55,9 @@ class FragmentConverter : Fragment() {
             clear()
             true
         }
+        binding.keyRefresh.setOnClickListener{
+            viewmodel.getApiRates()
+        }
     }
 
 
