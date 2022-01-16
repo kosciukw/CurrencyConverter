@@ -12,8 +12,9 @@ class MainViewModel(
     private val clearUseCase: ClearUseCase,
     private val setCommaUseCase: SetCommaUseCase,
     private val setNumberUseCase: SetNumberUseCase,
-    private val removeLastInputUseCase: RemoveLastInputUseCase
-) : ViewModel() {
+    private val removeLastInputUseCase: RemoveLastInputUseCase,
+    private val convertUseCase: ConvertUseCase
+    ) : ViewModel() {
 
     private val _exception: MutableLiveData<String> = MutableLiveData()
     val exception = _exception
@@ -89,7 +90,15 @@ class MainViewModel(
         rates: Map<String, Double>?,
         equation: String
     ) =
-        todo()
+        convertUseCase(Triple(map, rates, equation), viewModelScope) { result ->
+            result.onSuccess {
+                _outputEquation.value = it
+            }
+
+            result.onFailure {
+                _exception.value = it.message
+            }
+        }
 
     fun getApiRates() =
         todo()
