@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import com.google.gson.internal.LinkedTreeMap
 import com.kosciukvictor.currencyconverter.databinding.FragmentConverterBinding
 import com.kosciukvictor.currencyconverter.domain.viewmodels.MainViewModel
-import org.koin.android.viewmodel.ext.android.sharedViewModel
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 
 class FragmentConverter : Fragment() {
