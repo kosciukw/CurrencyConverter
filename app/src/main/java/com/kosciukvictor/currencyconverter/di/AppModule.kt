@@ -22,7 +22,7 @@ val appModule = module {
 
     factory<InputRepository> { InputRepositoryImpl() }
     factory { SetNumberUseCase(inputRepository = get()) }
-    factory { ClearUseCase(inputRepository = get()) }
+    factory { ClearEquationUseCase(inputRepository = get()) }
     factory { SetCommaUseCase(inputRepository = get()) }
     factory { RemoveLastInputUseCase(inputRepository = get()) }
     factory { ConvertUseCase(currencyConverter = get()) }
@@ -43,7 +43,7 @@ val appModule = module {
 
     viewModel {
         MainViewModel(
-            clearUseCase = get(),
+            clearEquationUseCase = get(),
             setCommaUseCase = get(),
             setNumberUseCase = get(),
             removeLastInputUseCase = get(),

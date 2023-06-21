@@ -8,5 +8,5 @@ interface InputRepository {
 
     fun setInputComma(currentEquation: String?): String
 
-    fun clear(): String
+    fun clearEquation(): String
 }

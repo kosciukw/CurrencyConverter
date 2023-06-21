@@ -2,10 +2,11 @@ package com.kosciukvictor.currencyconverter.domain.usecases
 
 import com.kosciukvictor.currencyconverter.domain.repositories.input.InputRepository
 
-class RemoveLastInputUseCase(
+class ClearEquationUseCase(
     private val inputRepository: InputRepository
-) : UseCase<String, String?>() {
+) : UseCase<String, Unit>() {
 
-    override suspend fun action(params: String?): String =
-        inputRepository.removeLastInput(params)
+    override suspend fun action(params: Unit): String {
+        return inputRepository.clearEquation()
+    }
 }

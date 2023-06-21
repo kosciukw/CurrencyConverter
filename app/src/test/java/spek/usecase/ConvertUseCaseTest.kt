@@ -1,5 +1,6 @@
 package spek.usecase
 
+import com.kosciukvictor.currencyconverter.domain.converter.models.ConvertData
 import com.kosciukvictor.currencyconverter.domain.usecases.ConvertUseCase
 import com.kosciukvictor.currencyconverter.domain.utils.KEY_FROM
 import com.kosciukvictor.currencyconverter.domain.utils.KEY_TO
@@ -24,7 +25,7 @@ object ConvertUseCaseTest : Spek({
             When("Perform set input number") {
                 runBlocking {
                     setNumberUseCase.action(
-                        Triple(
+                        ConvertData(
                             ratesIndexMapMock,
                             ratesMapMock,
                             mockEquation

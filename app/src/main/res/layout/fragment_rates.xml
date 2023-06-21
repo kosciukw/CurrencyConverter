@@ -62,7 +62,7 @@
             app:layout_constraintStart_toStartOf="@id/guideline_vertical_start"
             app:layout_constraintTop_toTopOf="parent"
 
-            android:text="@{viewmodel.rates.date}"
+            android:text="@{viewmodel.currencyRates.date}"
 
             />
 
@@ -114,7 +114,7 @@
             app:layout_constraintTop_toBottomOf="@id/guideline_horizontal_date"
             android:textAlignment="textEnd"
 
-            android:text="@{viewmodel.rates.base}"
+            android:text="@{viewmodel.currencyRates.base}"
 
             />
 

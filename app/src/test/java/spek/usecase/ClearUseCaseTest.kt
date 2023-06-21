@@ -1,7 +1,7 @@
 package spek.usecase
 
 import com.kosciukvictor.currencyconverter.domain.repositories.input.InputRepository
-import com.kosciukvictor.currencyconverter.domain.usecases.ClearUseCase
+import com.kosciukvictor.currencyconverter.domain.usecases.ClearEquationUseCase
 import io.mockk.coVerify
 import io.mockk.mockk
 import kotlinx.coroutines.runBlocking
@@ -12,7 +12,7 @@ object ClearUseCaseTest : Spek({
 
     Feature("Clear input use case") {
         val inputRepository: InputRepository = mockk(relaxed = true)
-        val clearInputUseCase = ClearUseCase(inputRepository)
+        val clearInputUseCase = ClearEquationUseCase(inputRepository)
 
         Scenario("Clear input") {
             When("Perform clear input") {
@@ -21,7 +21,7 @@ object ClearUseCaseTest : Spek({
                 }
             }
             Then("Should invoke clear input") {
-                coVerify { inputRepository.clear() }
+                coVerify { inputRepository.clearEquation() }
             }
         }
     }

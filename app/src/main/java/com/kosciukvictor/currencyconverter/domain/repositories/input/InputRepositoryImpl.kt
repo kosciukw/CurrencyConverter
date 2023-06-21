@@ -1,49 +1,51 @@
 package com.kosciukvictor.currencyconverter.domain.repositories.input
 
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import java.lang.Exception
+class InputRepositoryImpl : InputRepository {
 
-@ExperimentalCoroutinesApi
-class InputRepositoryImpl: InputRepository {
+    override fun clearEquation(): String {
+        return clear()
+    }
 
-    override fun clear() = clearEquation()
+    override fun removeLastInput(currentEquation: String?): String {
 
-    override fun removeLastInput(currentEquation: String?) = try {
-        val tmpEquation = currentEquation ?: clearEquation()
-        when (tmpEquation.length) {
+        val tmpEquation = currentEquation ?: clear()
+
+        return when (tmpEquation.length) {
             0, 1 -> clear()
             in 2 until INPUT_LIMIT -> tmpEquation.dropLast(1)
             else -> clear()
         }
-    } catch (e: Exception) {
-        throw e
     }
 
-    override fun setNumberInput(inputNumber: Int, currentEquation: String?): String = try {
-        val tmpEquation = currentEquation ?: clearEquation()
+    override fun setNumberInput(inputNumber: Int, currentEquation: String?): String {
 
-        if (tmpEquation.length > INPUT_LIMIT)
-            throw java.lang.IllegalStateException(EQUATION_TOO_LONG_ERROR_MSG)
+        val tmpEquation = currentEquation ?: clear()
 
-        tmpEquation.plus(inputNumber)
-    } catch (e: Exception) {
-        throw e
+        if (tmpEquation.length > INPUT_LIMIT) {
+            throw IllegalStateException(EQUATION_TOO_LONG_ERROR_MSG)
+        }
+
+        return tmpEquation.plus(inputNumber)
     }
 
-    override fun setInputComma(currentEquation: String?) = try {
+    override fun setInputComma(currentEquation: String?): String {
+
         if (currentEquation.isNullOrEmpty()) {
-            EMPTY_EQUATION_COMMA
-        } else if (currentEquation.length > INPUT_LIMIT) {
-            throw java.lang.IllegalStateException("Equation too long")
-        } else if (!currentEquation.contains(COMMA_SYMBOL)) {
-            currentEquation.plus(COMMA_SYMBOL)
-        } else
-            currentEquation
-    } catch (e: Exception) {
-        throw e
+            return EMPTY_EQUATION_COMMA
+        }
+
+        if (currentEquation.length > INPUT_LIMIT) {
+            throw IllegalStateException("Equation too long")
+        }
+
+        if (currentEquation.contains(COMMA_SYMBOL).not()) {
+            return currentEquation.plus(COMMA_SYMBOL)
+        }
+
+        return currentEquation
     }
 
-    private fun clearEquation() = ""
+    private fun clear() = ""
 
     companion object {
         const val INPUT_LIMIT = 14

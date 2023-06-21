@@ -62,7 +62,7 @@
             app:layout_constraintStart_toStartOf="@id/guideline_vertical_start"
             app:layout_constraintTop_toTopOf="parent"
 
-            android:text="@{viewmodel.rates.date}"
+            android:text="@{viewmodel.currencyRates.date}"
 
             />
 
@@ -206,7 +206,7 @@
             app:layout_constraintEnd_toStartOf="@id/key_8"
             app:layout_constraintStart_toStartOf="@id/guideline_vertical_start"
             app:layout_constraintTop_toBottomOf="@id/guideline_horizontal_separator"
-            android:onClick="@{() -> viewmodel.setNumericalInput(7, viewmodel.inputEquation)}"
+            android:onClick="@{() -> viewmodel.onSetNumericalInput(7, viewmodel.inputEquation)}"
 
             />
 
@@ -220,7 +220,7 @@
             app:layout_constraintEnd_toStartOf="@id/key_5"
             app:layout_constraintStart_toStartOf="@id/guideline_vertical_start"
             app:layout_constraintTop_toBottomOf="@id/key_7"
-            android:onClick="@{() -> viewmodel.setNumericalInput(4, viewmodel.inputEquation)}"
+            android:onClick="@{() -> viewmodel.onSetNumericalInput(4, viewmodel.inputEquation)}"
 
             />
 
@@ -236,7 +236,7 @@
             app:layout_constraintStart_toStartOf="@id/guideline_vertical_start"
             app:layout_constraintTop_toBottomOf="@id/key_4"
 
-            android:onClick="@{() -> viewmodel.setNumericalInput(1, viewmodel.inputEquation)}"
+            android:onClick="@{() -> viewmodel.onSetNumericalInput(1, viewmodel.inputEquation)}"
             />
 
 
@@ -254,7 +254,7 @@
 
             app:layout_constraintTop_toBottomOf="@id/key_1"
 
-            android:onClick="@{() -> viewmodel.removeLastInput(viewmodel.inputEquation)}"
+            android:onClick="@{() -> viewmodel.onRemoveLastInput(viewmodel.inputEquation)}"
             />
 
         <Button
@@ -268,7 +268,7 @@
             app:layout_constraintEnd_toStartOf="@id/key_9"
             app:layout_constraintStart_toEndOf="@id/key_7"
             app:layout_constraintTop_toBottomOf="@id/guideline_horizontal_separator"
-            android:onClick="@{() -> viewmodel.setNumericalInput(8, viewmodel.inputEquation)}"
+            android:onClick="@{() -> viewmodel.onSetNumericalInput(8, viewmodel.inputEquation)}"
 
             />
 
@@ -284,7 +284,7 @@
             app:layout_constraintStart_toEndOf="@id/key_4"
             app:layout_constraintTop_toBottomOf="@id/key_8"
 
-            android:onClick="@{() -> viewmodel.setNumericalInput(5, viewmodel.inputEquation)}"
+            android:onClick="@{() -> viewmodel.onSetNumericalInput(5, viewmodel.inputEquation)}"
             />
 
         <Button
@@ -299,7 +299,7 @@
             app:layout_constraintStart_toEndOf="@id/key_1"
             app:layout_constraintTop_toBottomOf="@id/key_5"
 
-            android:onClick="@{() -> viewmodel.setNumericalInput(2, viewmodel.inputEquation)}"
+            android:onClick="@{() -> viewmodel.onSetNumericalInput(2, viewmodel.inputEquation)}"
 
             />
 
@@ -315,7 +315,7 @@
             app:layout_constraintStart_toEndOf="@id/key_remove"
             app:layout_constraintTop_toBottomOf="@id/key_2"
 
-            android:onClick="@{() -> viewmodel.setNumericalInput(0, viewmodel.inputEquation)}"
+            android:onClick="@{() -> viewmodel.onSetNumericalInput(0, viewmodel.inputEquation)}"
             />
 
 
@@ -331,7 +331,7 @@
             app:layout_constraintStart_toEndOf="@id/key_8"
             app:layout_constraintTop_toBottomOf="@id/guideline_horizontal_separator"
 
-            android:onClick="@{() -> viewmodel.setNumericalInput(9, viewmodel.inputEquation)}"
+            android:onClick="@{() -> viewmodel.onSetNumericalInput(9, viewmodel.inputEquation)}"
             />
 
         <Button
@@ -346,7 +346,7 @@
             app:layout_constraintStart_toEndOf="@id/key_5"
             app:layout_constraintTop_toBottomOf="@id/key_9"
 
-            android:onClick="@{() -> viewmodel.setNumericalInput(6, viewmodel.inputEquation)}"
+            android:onClick="@{() -> viewmodel.onSetNumericalInput(6, viewmodel.inputEquation)}"
             />
 
         <Button
@@ -361,23 +361,22 @@
             app:layout_constraintStart_toEndOf="@id/key_2"
             app:layout_constraintTop_toBottomOf="@id/key_6"
 
-            android:onClick="@{() -> viewmodel.setNumericalInput(3, viewmodel.inputEquation)}"
+            android:onClick="@{() -> viewmodel.onSetNumericalInput(3, viewmodel.inputEquation)}"
             />
 
         <Button
             android:id="@+id/key_dot"
+            style="@style/inputKeys"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:text=","
-            style="@style/inputKeys"
+            android:onClick="@{() -> viewmodel.onSetInputComma(viewmodel.inputEquation)}"
 
+            android:text=","
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/guideline_vertical_end"
             app:layout_constraintStart_toEndOf="@id/key_0"
-            app:layout_constraintTop_toBottomOf="@id/key_3"
 
-            android:onClick="@{() -> viewmodel.setInputComma(viewmodel.inputEquation)}"
-            />
+            app:layout_constraintTop_toBottomOf="@id/key_3" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,7 +7,5 @@ data class ApiRates(
     val date : String,
     val rates : Map<String, Double>
 ){
-    companion object{
-
-    }
+    companion object{}
 }

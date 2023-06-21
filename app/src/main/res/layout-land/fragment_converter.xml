@@ -65,7 +65,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:gravity="center"
-            android:text="@{viewmodel.rates.date}"
+            android:text="@{viewmodel.currencyRates.date}"
             android:textAlignment="textStart"
 
             android:textSize="@dimen/S"
@@ -214,7 +214,7 @@
             style="@style/inputKeys"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:onClick="@{() -> viewmodel.setNumericalInput(7, viewmodel.inputEquation)}"
+            android:onClick="@{() -> viewmodel.onSetNumericalInput(7, viewmodel.inputEquation)}"
 
             android:text="7"
             app:layout_constraintBottom_toTopOf="@id/key_4"
@@ -229,7 +229,7 @@
             style="@style/inputKeys"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:onClick="@{() -> viewmodel.setNumericalInput(4, viewmodel.inputEquation)}"
+            android:onClick="@{() -> viewmodel.onSetNumericalInput(4, viewmodel.inputEquation)}"
 
             android:text="4"
             app:layout_constraintBottom_toTopOf="@id/key_1"
@@ -243,7 +243,7 @@
             style="@style/inputKeys"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:onClick="@{() -> viewmodel.setNumericalInput(1, viewmodel.inputEquation)}"
+            android:onClick="@{() -> viewmodel.onSetNumericalInput(1, viewmodel.inputEquation)}"
 
             android:text="1"
             app:layout_constraintBottom_toTopOf="@id/key_remove"
@@ -260,7 +260,7 @@
             android:longClickable="true"
 
 
-            android:onClick="@{() -> viewmodel.removeLastInput(viewmodel.inputEquation)}"
+            android:onClick="@{() -> viewmodel.onRemoveLastInput(viewmodel.inputEquation)}"
             android:text="⌫"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/key_0"
@@ -274,7 +274,7 @@
             style="@style/inputKeys"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:onClick="@{() -> viewmodel.setNumericalInput(8, viewmodel.inputEquation)}"
+            android:onClick="@{() -> viewmodel.onSetNumericalInput(8, viewmodel.inputEquation)}"
 
             android:text="8"
             app:layout_constraintBottom_toTopOf="@id/key_5"
@@ -290,7 +290,7 @@
             style="@style/inputKeys"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:onClick="@{() -> viewmodel.setNumericalInput(5, viewmodel.inputEquation)}"
+            android:onClick="@{() -> viewmodel.onSetNumericalInput(5, viewmodel.inputEquation)}"
 
             android:text="5"
             app:layout_constraintBottom_toTopOf="@id/key_2"
@@ -304,7 +304,7 @@
             style="@style/inputKeys"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:onClick="@{() -> viewmodel.setNumericalInput(2, viewmodel.inputEquation)}"
+            android:onClick="@{() -> viewmodel.onSetNumericalInput(2, viewmodel.inputEquation)}"
 
             android:text="2"
             app:layout_constraintBottom_toTopOf="@id/key_0"
@@ -318,7 +318,7 @@
             style="@style/inputKeys"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:onClick="@{() -> viewmodel.setNumericalInput(0, viewmodel.inputEquation)}"
+            android:onClick="@{() -> viewmodel.onSetNumericalInput(0, viewmodel.inputEquation)}"
 
             android:text="0"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -333,7 +333,7 @@
             style="@style/inputKeys"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:onClick="@{() -> viewmodel.setNumericalInput(9, viewmodel.inputEquation)}"
+            android:onClick="@{() -> viewmodel.onSetNumericalInput(9, viewmodel.inputEquation)}"
 
             android:text="9"
             app:layout_constraintBottom_toTopOf="@id/key_6"
@@ -347,7 +347,7 @@
             style="@style/inputKeys"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:onClick="@{() -> viewmodel.setNumericalInput(6, viewmodel.inputEquation)}"
+            android:onClick="@{() -> viewmodel.onSetNumericalInput(6, viewmodel.inputEquation)}"
 
             android:text="6"
             app:layout_constraintBottom_toTopOf="@id/key_3"
@@ -361,7 +361,7 @@
             style="@style/inputKeys"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:onClick="@{() -> viewmodel.setNumericalInput(3, viewmodel.inputEquation)}"
+            android:onClick="@{() -> viewmodel.onSetNumericalInput(3, viewmodel.inputEquation)}"
 
             android:text="3"
             app:layout_constraintBottom_toTopOf="@id/key_dot"
@@ -375,7 +375,7 @@
             style="@style/inputKeys"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:onClick="@{() -> viewmodel.setInputComma(viewmodel.inputEquation)}"
+            android:onClick="@{() -> viewmodel.onSetInputComma(viewmodel.inputEquation)}"
 
             android:text=","
             app:layout_constraintBottom_toBottomOf="parent"

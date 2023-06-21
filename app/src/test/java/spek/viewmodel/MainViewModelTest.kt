@@ -20,7 +20,7 @@ object MainViewModelTest : Spek({
     initializeArchTaskExecutor()
     Feature("Main View Model") {
         val convertUseCase: ConvertUseCase = mockk(relaxed = true)
-        val clearUseCase: ClearUseCase = mockk(relaxed = true)
+        val clearUseCase: ClearEquationUseCase = mockk(relaxed = true)
         val setCommaUseCase: SetCommaUseCase = mockk(relaxed = true)
         val setNumberUseCase: SetNumberUseCase = mockk(relaxed = true)
         val getRatesUseCase: GetRatesUseCase = mockk(relaxed = true)
@@ -32,7 +32,7 @@ object MainViewModelTest : Spek({
 
         val viewModel by memoized {
             MainViewModel(
-                clearUseCase = clearUseCase,
+                clearEquationUseCase = clearUseCase,
                 convertUseCase = convertUseCase,
                 setCommaUseCase = setCommaUseCase,
                 setNumberUseCase = setNumberUseCase,
@@ -85,7 +85,7 @@ object MainViewModelTest : Spek({
             }
             When("Get rates from api called") { viewModel.getApiRates() }
             Then("Retrieved data should be equal to api data") {
-                viewModel.rates.value shouldBeEqualTo ApiRates.mock(true)
+                viewModel.currencyRates.value shouldBeEqualTo ApiRates.mock(true)
             }
         }
 
@@ -133,7 +133,7 @@ object MainViewModelTest : Spek({
             }
             When("Get Currency Preferences UseCase called") { viewModel.getCurrencyPreferences() }
             Then("Retrieved prefs should be EUR") {
-                viewModel.prefCurr.value shouldBeEqualTo getPrefsMapMock
+                viewModel.preferredCurrencies.value shouldBeEqualTo getPrefsMapMock
             }
         }
 
@@ -188,7 +188,7 @@ object MainViewModelTest : Spek({
             }
             When("Get spinner prefs called") { viewModel.getCurrencyPreferences() }
             Then("Retrieved prefs should be equal to") {
-                viewModel.prefCurr.value shouldBeEqualTo setPrefsMapMock
+                viewModel.preferredCurrencies.value shouldBeEqualTo setPrefsMapMock
             }
         }
 
@@ -328,7 +328,7 @@ object MainViewModelTest : Spek({
                     success = true
                 )
             }
-            When("Clear input called") { viewModel.clear() }
+            When("Clear input called") { viewModel.clearEquation() }
             Then("Input equation should be empty") {
                 assertTrue { viewModel.inputEquation.value!!.isEmpty() }
             }

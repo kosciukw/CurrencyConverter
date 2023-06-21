@@ -15,5 +15,4 @@ class LoadingDialogFragment : DialogFragment() {
     ): View? {
         return inflater.inflate(R.layout.fragment_loading_dialog, container, false)
     }
-
 }

@@ -1,12 +1,16 @@
 package com.kosciukvictor.currencyconverter.domain.usecases
 
+import com.kosciukvictor.currencyconverter.domain.converter.models.ConvertData
 import com.kosciukvictor.currencyconverter.domain.utils.converter.CurrencyConverter
 
-class ConvertUseCase(private val currencyConverter: CurrencyConverter) :
-    UseCase<String, Triple<Map<String, Int>?, Map<String, Double>?, String?>>() {
+class ConvertUseCase(
+    private val currencyConverter: CurrencyConverter
+) : UseCase<String, ConvertData>() {
 
-    override suspend fun action(params: Triple<Map<String, Int>?, Map<String, Double>?, String?>): String
-        = currencyConverter.convertCurrencies(ratesIndexMap = params.first,
-        ratesValuesMap = params.second,
-        currentEquation = params.third)
+    override suspend fun action(convertData: ConvertData): String =
+        currencyConverter.convertCurrencies(
+            ratesIndexMap = convertData.ratesIndexMap,
+            ratesValuesMap = convertData.ratesValuesMap,
+            currentEquation = convertData.currentEquation
+        )
 }

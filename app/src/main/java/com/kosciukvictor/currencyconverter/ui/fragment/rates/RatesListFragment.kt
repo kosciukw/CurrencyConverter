@@ -19,7 +19,6 @@ class RatesListFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
     lateinit var binding: FragmentRatesBinding
 
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -37,14 +36,20 @@ class RatesListFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?
     ): FragmentRatesBinding {
-        val binding = FragmentRatesBinding.inflate(inflater, container, false)
+        val binding = FragmentRatesBinding
+            .inflate(
+                inflater,
+                container,
+                false
+            )
+
         binding.viewmodel = viewmodel
         binding.lifecycleOwner = viewLifecycleOwner
         return binding
     }
 
     private fun subscribeObservers() {
-        viewmodel.rates.observe(viewLifecycleOwner, Observer {
+        viewmodel.currencyRates.observe(viewLifecycleOwner, Observer {
             setupRatesList(it.rates as LinkedTreeMap<String, Double>)
         })
     }
