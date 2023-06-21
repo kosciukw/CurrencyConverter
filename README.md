@@ -1,7 +1,3 @@
-# Konwerter Walut - Wiktor Kościuk
-
-Samodzielny projekt zaliczeniowy z przedmiotu Laboratorium specjalistyczne II: Środowiska programistyczne (laboratorium - Grupa 2)
-
 
 Technologie
 --------------
